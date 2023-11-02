@@ -11,17 +11,63 @@ administrarJuego::administrarJuego()
 
 }
 
-bool administrarJuego::validarMovimientos(char)
+bool administrarJuego::validarMovimientos(char &fichaActual,char &fichaOponente, int &tamanoTablero)
 {
     //recibe un char que es el color de ficha para comprobar si esa tiene movimientos posibles o si le toca
     //ceder el turno.
+    for (int fila = 0; fila < tamanoTablero; fila++){
+        for (int columna = 0; columna < tamanoTablero; columna++){
+            if (tablero[fila][columna] == " " && movimientoValido(fila, columna, tamanoTablero,fichaActual,fichaOponente)){
+                return true;
+            }
+            else{
+                return false;
+            }
+        }
+    }
 }
 
-bool administrarJuego::verificarJugada(int &fila, int &columna)
+bool administrarJuego::movimientoValido(int fila, int columna, int tamanoTablero, char fichaActual, char fichaOponente)
 {
-    //mira si en esa posicion donde el jugador quiere colocar una ficha si se puede (que esté libre)
-    //y si sí encirra fichas del oponente.
+    // Verificar si la casilla en la posición (fila, columna) está vacía
+    if (tablero[fila][columna] != " ") {
+        return false;  // La casilla no está vacía, el movimiento no es válido.
+    }
+
+    bool movimientoValido = false;
+
+    // Direcciones en las que se pueden voltear fichas del oponente
+    int direcciones[8][2] = {{-1, 0}, {1, 0}, {0, -1}, {0, 1}, {-1, -1}, {-1, 1}, {1, -1}, {1, 1}};
+
+    for (int i = 0; i < tamanoTablero; i++) {
+        int dx = direcciones[i][0];
+        int dy = direcciones[i][1];
+
+        // Variables para rastrear si se pueden voltear fichas del oponente en esta dirección
+        bool fichasParaVoltear = false;
+        int x = fila + dx;
+        int y = columna + dy;
+
+        while (x >= 0 && x < tamanoTablero && y >= 0 && y < tamanoTablero) {
+            if (tablero[x][y] == fichaOponente) {
+                fichasParaVoltear = true;
+            } else if (tablero[x][y] == fichaActual) {
+                if (fichasParaVoltear) {
+                    movimientoValido = true;
+                }
+                break;
+            } else {
+                break;
+            }
+
+            x += dx;
+            y += dy;
+        }
+    }
+
+    return movimientoValido;
 }
+
 
 void administrarJuego::hacerJugada(int &fila, int &columna)
 {
@@ -40,24 +86,31 @@ void administrarJuego::guardarInformacion(string &nombre1, string &nombre2, int 
     if(!archivo.is_open()){
         cout<<"No se pudo abrir el archivo."<<endl;
     }
-    time_t tiempoAhora;
+    time_t tiempoAhora  ;
     time(&tiempoAhora);
     struct tm *miTiempo=localtime(&tiempoAhora);
 
     if(numeroFichas1>numeroFichas2){
-        archivo<<nombre1<<","<<nombre2<<","<<miTiempo->tm_mday<<"/"<< miTiempo->tm_mon+ 1
-                <<"/"<< miTiempo->tm_year+ 1900<<","<<nombre1<<","<<numeroFichas1<<endl;
+        archivo<<nombre1<<","<<nombre2<<","<<miTiempo->tm_mday<<"/"<< miTiempo->tm_mon+ 1<<"/"
+        << miTiempo->tm_year+ 1900<<" "<< miTiempo->tm_hour - 17 <<":"<< miTiempo->tm_min
+                <<":"<< miTiempo->tm_sec<<","<<nombre1<<","<<numeroFichas1<<"-"<<numeroFichas2<<endl;
     }
-    else{
-        archivo<<nombre1<<","<<nombre2<<","<<miTiempo->tm_mday<<"/"<< miTiempo->tm_mon+ 1
-                <<"/"<< miTiempo->tm_year+ 1900<<","<<nombre2<<","<<numeroFichas2<<endl;
+    else if(numeroFichas2>numeroFichas1){
+        archivo<<nombre1<<","<<nombre2<<","<<miTiempo->tm_mday<<"/"<< miTiempo->tm_mon+ 1<<"/"
+        << miTiempo->tm_year+ 1900<<" "<< miTiempo->tm_hour - 17 <<":"<< miTiempo->tm_min
+        <<":"<< miTiempo->tm_sec<<","<<nombre2<<","<<numeroFichas2<<"-"<<numeroFichas1<<endl;
+    }
+    else if(numeroFichas2==numeroFichas1){
+        archivo<<nombre1<<","<<nombre2<<","<<miTiempo->tm_mday<<"/"<< miTiempo->tm_mon+ 1<<"/"
+        << miTiempo->tm_year+ 1900<<" "<< miTiempo->tm_hour - 17 <<":"<< miTiempo->tm_min
+        <<":"<< miTiempo->tm_sec<<",empate,"<<numeroFichas2<<"-"<<numeroFichas1<<endl;
     }
     archivo.close();
 }
 
 void administrarJuego::verHistorial()
 {
-    ifstream archivo("informacion.txt");
+    ifstream archivo("archivo.txt");
     if(!archivo.is_open()){
         cout<<"No se pudo abrir el archivo."<<endl;
     }
@@ -119,7 +172,7 @@ void administrarJuego::verHistorial()
 
     archivo.close();
 }
-/*
+
 void administrarJuego::MenuPrincipal()
 {
     cout<<endl;
@@ -128,4 +181,4 @@ void administrarJuego::MenuPrincipal()
     cout<<"1. Jugar"<<endl;
     cout<<"2. Ver historial"<<endl;
     cout<<endl;
-}*/
+}
