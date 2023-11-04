@@ -29,10 +29,9 @@ Jugador::Jugador(string nombre, char colorFicha)
     this->colorFicha = colorFicha;
 }
 
-void Jugador::indicarPosicion(int &fila, int &columna)
+void Jugador::indicarPosicion(int &fila, int &columna, int tamano)
 {
     //Metodo para pedir posición al usuario
-    int n=8;
     char letra;
     int numero;
     string posicion;
@@ -51,13 +50,13 @@ void Jugador::indicarPosicion(int &fila, int &columna)
         numero = posicion[1] - '0';
 
         // Verificar que la letra sea una letra válida (por ejemplo, 'A', 'B', 'C', ...)
-        if (letra < 'A' || letra > 'A'+ n){
+        if (letra < 'A' || letra > 'A'+ tamano){
             cout << "Letra no valida." << endl;
         }
 
         // Verificar que el número sea un número válido (por ejemplo, 1, 2, 3, ...)
-        else if (numero < 1 || numero > n) {
-            cout << "Numero no valido. Debe estar en el rango de 1 a "<< n <<"." << endl;
+        else if (numero < 1 || numero > tamano) {
+            cout << "Numero no valido. Debe estar en el rango de 1 a "<< tamano <<"." << endl;
         }
         else{
             break;

@@ -49,10 +49,6 @@ void Tablero::TableroInicial(int TableroTamano, char** tablero)
     tablero[TableroTamano / 2][TableroTamano / 2] = '-';
 }
 
-void Tablero::liberarMemoria(int TableroTamano, char** tablero)
-{
-
-}
 
 Tablero::Tablero(int tamanoTablero)
 {
@@ -67,7 +63,7 @@ Tablero::~Tablero()
 {
     // Liberar la memoria utilizada por el arreglo bidimensional
     if (tablero != nullptr) {
-        for (int i = 0; i < TableroTamano; i++) {
+        for (int i = 0; i < tamano; i++) {
             delete[] tablero[i];
         }
         delete[] tablero;

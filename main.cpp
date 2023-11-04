@@ -78,7 +78,7 @@ int main()
                 bool entradaValida = false;
 
                 while(!entradaValida){
-                    jugadorUno.indicarPosicion(fila, columna);
+                    jugadorUno.indicarPosicion(fila, columna, tamano);
 
                     if (!juego.movimientoValido(fila, columna,tabla.getTamano(), jugadorActual,oponente, false, tabla.getTablero())) {
                         cout << "Movimiento no valido. Intentalo de nuevo." << endl;
