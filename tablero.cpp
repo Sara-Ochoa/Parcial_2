@@ -1,4 +1,7 @@
 #include "tablero.h"
+#include <iostream>
+
+using namespace std;
 
 int Tablero::getTamano() const
 {
@@ -10,22 +13,65 @@ void Tablero::setTamano(int newTamano)
     tamano = newTamano;
 }
 
-void Tablero::dibujarTablero(int tamano)
+char** Tablero::getTablero() const
 {
-    //La implementación la hizo Darwin
+    return tablero;
 }
 
-void Tablero::asignarMemoria()
+void Tablero::dibujarTablero(int TableroTamano, char** tablero)
 {
-    //La implementación la hizo Darwin
+    cout << "   ";
+    for (int i = 0; i < TableroTamano; i++) {
+        cout << static_cast<char>('A' + i) << ' ';
+    }
+    cout << endl;
+
+    for (int i = 0; i < TableroTamano; i++) {
+        cout << i + 1 << " ";
+        for (int j = 0; j < TableroTamano; j++) {
+            cout << "|" << tablero[i][j];
+        }
+        cout << "|" << endl;
+    }
 }
 
-void Tablero::liberarMemoria()
+void Tablero::TableroInicial(int TableroTamano, char** tablero)
 {
-    //La implementación la hizo Darwin
+    for (int i = 0; i < TableroTamano; i++) {
+        for (int j = 0; j < TableroTamano; j++) {
+            tablero[i][j] =  ' ';
+        }
+    }
+
+    tablero[(TableroTamano / 2) - 1][(TableroTamano / 2) - 1] = '-';
+    tablero[(TableroTamano / 2) - 1][TableroTamano / 2] = '*';
+    tablero[TableroTamano / 2][(TableroTamano / 2) - 1] = '*';
+    tablero[TableroTamano / 2][TableroTamano / 2] = '-';
 }
 
-Tablero::Tablero()
+void Tablero::liberarMemoria(int TableroTamano, char** tablero)
 {
 
 }
+
+Tablero::Tablero(int tamanoTablero)
+{
+    this->tamano = tamanoTablero;
+    this->tablero = new char* [tamano];
+    for (int i = 0; i < tamanoTablero; i++) {
+        this->tablero[i] = new char[tamano];
+    }
+}
+
+Tablero::~Tablero()
+{
+    // Liberar la memoria utilizada por el arreglo bidimensional
+    if (tablero != nullptr) {
+        for (int i = 0; i < TableroTamano; i++) {
+            delete[] tablero[i];
+        }
+        delete[] tablero;
+        tablero = nullptr;
+    }
+}
+
