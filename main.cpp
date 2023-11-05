@@ -19,8 +19,6 @@ int main()
             const int tamano =8;
             Tablero tabla(tamano);
             tabla.TableroInicial(tamano,tabla.getTablero());
-            tabla.dibujarTablero(tamano,tabla.getTablero());
-
 
             string jugador1, jugador2;
             cout<<"Ingrese el nombre del primer jugador: "<<endl;
