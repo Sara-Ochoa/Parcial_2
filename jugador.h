@@ -14,9 +14,7 @@ public:
     Jugador(string nombre, char colorFicha);
     void indicarPosicion(int &fila, int &columna, int tamano);
     string getNombre() const;
-    void setNombre(const string &newNombre);
     char getColorFicha() const;
-    void setColorFicha(char newColorFicha);
 };
 
 #endif // JUGADOR_H

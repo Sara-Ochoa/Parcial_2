@@ -8,11 +8,6 @@ int Tablero::getTamano() const
     return tamano;
 }
 
-void Tablero::setTamano(int newTamano)
-{
-    tamano = newTamano;
-}
-
 char** Tablero::getTablero() const
 {
     return tablero;

@@ -8,19 +8,9 @@ string Jugador::getNombre() const
     return nombre;
 }
 
-void Jugador::setNombre(const string &newNombre)
-{
-    nombre = newNombre;
-}
-
 char Jugador::getColorFicha() const
 {
     return colorFicha;
-}
-
-void Jugador::setColorFicha(char newColorFicha)
-{
-    colorFicha = newColorFicha;
 }
 
 Jugador::Jugador(string nombre, char colorFicha)
