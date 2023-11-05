@@ -30,7 +30,6 @@ int main()
             Jugador jugadorUno(jugador1, '*');
             Jugador jugadorDos(jugador2, '-');
 
-            //mostrar el tablero
             cout<<"El jugador 1 ("<<jugadorUno.getNombre()<<") tiene la ficha: "<<jugadorUno.getColorFicha()<<endl;
             cout<<"El jugador 2 ("<<jugadorDos.getNombre()<<") tiene la ficha: "<<jugadorDos.getColorFicha()<<endl;
             cout<<"Inicia el jugador 1"<<endl;

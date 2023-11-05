@@ -114,12 +114,12 @@ void administrarJuego::guardarInformacion(string nombre1, string nombre2, pair<i
     }
     else if(conteos.second>conteos.first){
         archivo<<nombre1<<","<<nombre2<<","<<miTiempo->tm_mday<<"/"<< miTiempo->tm_mon+ 1<<"/"
-        << miTiempo->tm_year+ 1900<<" "<< miTiempo->tm_hour - 17 <<":"<< miTiempo->tm_min
+        << miTiempo->tm_year+ 1900<<" "<< miTiempo->tm_hour <<":"<< miTiempo->tm_min
         <<":"<< miTiempo->tm_sec<<","<<nombre2<<","<<conteos.second<<"-"<<conteos.first<<endl;
     }
     else if(conteos.second==conteos.first){
         archivo<<nombre1<<","<<nombre2<<","<<miTiempo->tm_mday<<"/"<< miTiempo->tm_mon+ 1<<"/"
-        << miTiempo->tm_year+ 1900<<" "<< miTiempo->tm_hour - 17 <<":"<< miTiempo->tm_min
+        << miTiempo->tm_year+ 1900<<" "<< miTiempo->tm_hour<<":"<< miTiempo->tm_min
         <<":"<< miTiempo->tm_sec<<",empate,"<<conteos.first<<"-"<<conteos.second<<endl;
     }
     archivo.close();
