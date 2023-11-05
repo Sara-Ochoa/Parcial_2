@@ -18,4 +18,5 @@ public:
     void setTablero(char **newTablero);
 };
 
+
 #endif // TABLERO_H
