@@ -13,7 +13,6 @@ public:
                           bool modo,char** tablero);
     bool hacerJugada(int fila, int col, int tamano, char jugador, char oponente, char** tablero);
     pair<int, int> cuentafichas(int TableroTamano,char J1,char J2, char** tablero);
-    void terminarJuego();
     void MenuPrincipal();
     void guardarInformacion(string nombre1, string nombre2, pair<int,int> conteos);
     void verHistorial();

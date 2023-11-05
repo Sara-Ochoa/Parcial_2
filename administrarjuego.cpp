@@ -97,11 +97,6 @@ pair<int, int> administrarJuego::cuentafichas(int TableroTamano, char J1, char J
 }
 
 
-void administrarJuego::terminarJuego()
-{
-    //termina el juego y escribe en el txt la información pedida
-}
-
 void administrarJuego::guardarInformacion(string nombre1, string nombre2, pair<int,int> conteos)
 {
     ofstream archivo("informacion.txt", std::ios::app);
