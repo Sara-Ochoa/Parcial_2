@@ -63,6 +63,9 @@ int main()
                             break;
                         }
                     }
+                    else{
+                        cout << oponente << " No puede mover. Turno de " << jugadorActual << "." << endl;
+                    }
                 }
                 cout << "Turno del jugador " << jugadorActual << endl;
                 cout<<"El oponente es: "<<oponente<<endl;

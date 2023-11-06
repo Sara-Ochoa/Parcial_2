@@ -195,8 +195,8 @@ void administrarJuego::MenuPrincipal()
     cout<<endl;
     cout<<"*********** Menu parcial 2 ***********"<<endl;
     cout<<endl;
-    cout<<"1. Jugar"<<endl;
-    cout<<"2. Ver historial"<<endl;
-    cout<<"0. Pasar salir"<<endl;
+    cout<<"1. Jugar."<<endl;
+    cout<<"2. Ver historial."<<endl;
+    cout<<"0. Para salir."<<endl;
     cout<<endl;
 }
