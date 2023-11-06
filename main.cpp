@@ -92,7 +92,6 @@ int main()
         }
         case 2:
         {
-            //administrarJuego uno;
             juego.verHistorial();
             break;
         }
