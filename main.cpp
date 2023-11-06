@@ -92,8 +92,8 @@ int main()
         }
         case 2:
         {
-            administrarJuego uno;
-            uno.verHistorial();
+            //administrarJuego uno;
+            juego.verHistorial();
             break;
         }
         default:
