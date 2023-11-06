@@ -21,10 +21,12 @@ int main()
             tabla.TableroInicial(tamano,tabla.getTablero());
 
             string jugador1, jugador2;
-            cout<<"Ingrese el nombre del primer jugador: "<<endl;
+            cout<<"Ingrese el nombre del primer jugador: ";
             cin>>jugador1;
-            cout<<"Ingrese el nombre del segundo jugador: "<<endl;
+            cout<<endl;
+            cout<<"Ingrese el nombre del segundo jugador: ";
             cin>>jugador2;
+            cout<<endl;
             Jugador jugadorUno(jugador1, '*');
             Jugador jugadorDos(jugador2, '-');
 
@@ -62,10 +64,10 @@ int main()
                             }
                             break;
                         }
-                    }
-                    else{
-                        cout << oponente << " No puede mover. Turno de " << jugadorActual << "." << endl;
-                    }
+                        }
+                        else{
+                            cout << oponente << " No puede mover. Turno de " << jugadorActual << "." << endl;
+                        }
                 }
                 cout << "Turno del jugador " << jugadorActual << endl;
                 cout<<"El oponente es: "<<oponente<<endl;
