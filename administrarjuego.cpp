@@ -198,5 +198,5 @@ void administrarJuego::MenuPrincipal()
     cout<<"1. Jugar."<<endl;
     cout<<"2. Ver historial."<<endl;
     cout<<"0. Para salir."<<endl;
-    cout<<endl;
+    cout<<"Seleccione una opcion: ";
 }
