@@ -13,6 +13,7 @@ int main()
         administrarJuego juego;
         juego.MenuPrincipal();
         cin>>opcion;
+        cout<<endl;
         switch (opcion) {
         case 1:
         {
